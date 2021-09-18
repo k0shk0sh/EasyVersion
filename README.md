@@ -1,7 +1,4 @@
-![release-status](https://github.com/k0shk0sh/EasyVersion/actions/workflows/release.yml/badge.svg) [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.github.k0shk0sh/easyversion/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.github.k0shk0sh/easyversion)
-
-
-# EasyVersion
+# EasyVersion ![release-status](https://github.com/k0shk0sh/EasyVersion/actions/workflows/release.yml/badge.svg)
 
 EasyVersion is a Gradle plugin that manage your app or library version.
 
@@ -19,7 +16,7 @@ match your needs.
 }
 ```
 
-## Download
+## Download [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.github.k0shk0sh/easyversion/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.github.k0shk0sh/easyversion)
 
 ```kotlin
 plugins {
