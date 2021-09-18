@@ -61,7 +61,7 @@ properties upon completion.
 
 ## Example
 
-Before publishing your new awesome library or module, call either one of the tasks first followed by
+Before publishing your new awesome library, module or app, call either one of the tasks first followed by
 your releasing task.
 
 ## EasyVersion Properties
