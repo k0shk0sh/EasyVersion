@@ -8,6 +8,9 @@ import org.gradle.kotlin.dsl.create
  */
 class EasyVersionPlugin : Plugin<Project> {
 
+  /**
+   * Apply the plugin to the current [Project].
+   */
   override fun apply(project: Project) {
     project.extensions.create<EasyVersionExtension>("easyVersion")
 

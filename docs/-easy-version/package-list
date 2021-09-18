@@ -1,0 +1,28 @@
+$dokka.format:html-v1
+$dokka.linkExtension:html
+$dokka.location:com.github.k0shk0sh.easy.version////PointingToDeclaration/-easy-version/com.github.k0shk0sh.easy.version/index.html
+$dokka.location:com.github.k0shk0sh.easy.version//versionCode/org.gradle.api.Project#/PointingToDeclaration/-easy-version/com.github.k0shk0sh.easy.version/version-code.html
+$dokka.location:com.github.k0shk0sh.easy.version//versionName/org.gradle.api.Project#/PointingToDeclaration/-easy-version/com.github.k0shk0sh.easy.version/version-name.html
+$dokka.location:com.github.k0shk0sh.easy.version/EasyVersionExtension///PointingToDeclaration/-easy-version/com.github.k0shk0sh.easy.version/-easy-version-extension/index.html
+$dokka.location:com.github.k0shk0sh.easy.version/EasyVersionExtension/EasyVersionExtension/#/PointingToDeclaration/-easy-version/com.github.k0shk0sh.easy.version/-easy-version-extension/-easy-version-extension.html
+$dokka.location:com.github.k0shk0sh.easy.version/EasyVersionExtension/logVersion/#/PointingToDeclaration/-easy-version/com.github.k0shk0sh.easy.version/-easy-version-extension/log-version.html
+$dokka.location:com.github.k0shk0sh.easy.version/EasyVersionExtension/propertiesToSet/#/PointingToDeclaration/-easy-version/com.github.k0shk0sh.easy.version/-easy-version-extension/properties-to-set.html
+$dokka.location:com.github.k0shk0sh.easy.version/EasyVersionExtension/setToProjectVersion/#/PointingToDeclaration/-easy-version/com.github.k0shk0sh.easy.version/-easy-version-extension/set-to-project-version.html
+$dokka.location:com.github.k0shk0sh.easy.version/EasyVersionExtension/snapshotDefinition/#/PointingToDeclaration/-easy-version/com.github.k0shk0sh.easy.version/-easy-version-extension/snapshot-definition.html
+$dokka.location:com.github.k0shk0sh.easy.version/EasyVersionExtension/snapshotLabel/#/PointingToDeclaration/-easy-version/com.github.k0shk0sh.easy.version/-easy-version-extension/snapshot-label.html
+$dokka.location:com.github.k0shk0sh.easy.version/EasyVersionFileProvider///PointingToDeclaration/-easy-version/com.github.k0shk0sh.easy.version/-easy-version-file-provider/index.html
+$dokka.location:com.github.k0shk0sh.easy.version/EasyVersionPlugin///PointingToDeclaration/-easy-version/com.github.k0shk0sh.easy.version/-easy-version-plugin/index.html
+$dokka.location:com.github.k0shk0sh.easy.version/EasyVersionPlugin/EasyVersionPlugin/#/PointingToDeclaration/-easy-version/com.github.k0shk0sh.easy.version/-easy-version-plugin/-easy-version-plugin.html
+$dokka.location:com.github.k0shk0sh.easy.version/EasyVersionPlugin/apply/#org.gradle.api.Project/PointingToDeclaration/-easy-version/com.github.k0shk0sh.easy.version/-easy-version-plugin/apply.html
+$dokka.location:com.github.k0shk0sh.easy.version/SnapshotDefinition.COMMIT///PointingToDeclaration/-easy-version/com.github.k0shk0sh.easy.version/-snapshot-definition/-c-o-m-m-i-t/index.html
+$dokka.location:com.github.k0shk0sh.easy.version/SnapshotDefinition.COMMIT/name/#/PointingToDeclaration/-easy-version/com.github.k0shk0sh.easy.version/-snapshot-definition/-c-o-m-m-i-t/name.html
+$dokka.location:com.github.k0shk0sh.easy.version/SnapshotDefinition.COMMIT/ordinal/#/PointingToDeclaration/-easy-version/com.github.k0shk0sh.easy.version/-snapshot-definition/-c-o-m-m-i-t/ordinal.html
+$dokka.location:com.github.k0shk0sh.easy.version/SnapshotDefinition.DATE_SECONDS///PointingToDeclaration/-easy-version/com.github.k0shk0sh.easy.version/-snapshot-definition/-d-a-t-e_-s-e-c-o-n-d-s/index.html
+$dokka.location:com.github.k0shk0sh.easy.version/SnapshotDefinition.DATE_SECONDS/name/#/PointingToDeclaration/-easy-version/com.github.k0shk0sh.easy.version/-snapshot-definition/-d-a-t-e_-s-e-c-o-n-d-s/name.html
+$dokka.location:com.github.k0shk0sh.easy.version/SnapshotDefinition.DATE_SECONDS/ordinal/#/PointingToDeclaration/-easy-version/com.github.k0shk0sh.easy.version/-snapshot-definition/-d-a-t-e_-s-e-c-o-n-d-s/ordinal.html
+$dokka.location:com.github.k0shk0sh.easy.version/SnapshotDefinition.TIMESTAMP///PointingToDeclaration/-easy-version/com.github.k0shk0sh.easy.version/-snapshot-definition/-t-i-m-e-s-t-a-m-p/index.html
+$dokka.location:com.github.k0shk0sh.easy.version/SnapshotDefinition.TIMESTAMP/name/#/PointingToDeclaration/-easy-version/com.github.k0shk0sh.easy.version/-snapshot-definition/-t-i-m-e-s-t-a-m-p/name.html
+$dokka.location:com.github.k0shk0sh.easy.version/SnapshotDefinition.TIMESTAMP/ordinal/#/PointingToDeclaration/-easy-version/com.github.k0shk0sh.easy.version/-snapshot-definition/-t-i-m-e-s-t-a-m-p/ordinal.html
+$dokka.location:com.github.k0shk0sh.easy.version/SnapshotDefinition///PointingToDeclaration/-easy-version/com.github.k0shk0sh.easy.version/-snapshot-definition/index.html
+com.github.k0shk0sh.easy.version
+
