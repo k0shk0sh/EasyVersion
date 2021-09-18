@@ -1,11 +1,12 @@
-import java.io.File
+package com.github.k0shk0sh.easy.version
+
 import org.gradle.api.*
 import org.gradle.kotlin.dsl.create
 
 class EasyVersionPlugin : Plugin<Project> {
 
   override fun apply(project: Project) {
-    project.extensions.create<EasyVersionExtension>("easyVersionConfig")
+    project.extensions.create<EasyVersionExtension>("easyVersion")
 
     if (!project.file(FILE_NAME).exists()) {
       throw GradleException("Please create $FILE_NAME in your root project directory")

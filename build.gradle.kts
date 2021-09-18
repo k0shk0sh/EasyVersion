@@ -1,19 +1,37 @@
-/*
-buildscript {
-  repositories {
-    mavenCentral()
+import com.github.k0shk0sh.easy.version.SnapshotDefinition
+
+plugins {
+  `kotlin-dsl`
+  id("com.vanniktech.maven.publish") version "0.18.0"
+  id("com.github.k0shk0sh.easy.version") version "+" // get latest from mavenLocal()
+}
+
+easyVersion {
+  snapshotLabel = "-SNAPSHOT"
+  snapshotDefinition = SnapshotDefinition.TIMESTAMP
+  propertiesToSet = listOf("VERSION_NAME")
+  setToProjectVersion = true
+  logVersion = true
+}
+
+gradlePlugin {
+  plugins {
+    create("easyVersion") {
+      id = "com.github.k0shk0sh.easy.version"
+      implementationClass = "com.github.k0shk0sh.easy.version.EasyVersionPlugin"
+      displayName = "EasyVersion Gradle Plugin"
+      description = "Gradle plugin that manage your App or Library versioning"
+    }
   }
 }
 
-plugins {
-  easyVersion
+repositories {
+  mavenCentral()
+  mavenLocal()
 }
 
-easyVersionConfig {
-  snapshotLabel = "-SNAPSHOT" // default
-  snapshotDefinition = SnapshotDefinition.TIMESTAMP // default
-  propertiesToSet = listOf("VERSION_NAME") // default
-  setToProjectVersion = true // default
-  logVersion = true // default = false
+dependencies {
+  kotlin("kotlin-gradle")
+  implementation(gradleApi())
+  implementation("com.google.code.gson:gson:2.8.8")
 }
-*/

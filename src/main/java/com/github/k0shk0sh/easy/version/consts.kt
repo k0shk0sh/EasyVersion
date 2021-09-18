@@ -1,3 +1,5 @@
+package com.github.k0shk0sh.easy.version
+
 /**
  * The current version name.
  */

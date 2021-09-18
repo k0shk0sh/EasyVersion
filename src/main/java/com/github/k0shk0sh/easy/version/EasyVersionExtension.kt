@@ -1,3 +1,5 @@
+package com.github.k0shk0sh.easy.version
+
 import java.io.ByteArrayOutputStream
 import java.text.DateFormat
 import java.util.*

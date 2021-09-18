@@ -1,3 +1,5 @@
+package com.github.k0shk0sh.easy.version
+
 import com.google.gson.GsonBuilder
 import java.io.FileReader
 import java.io.FileWriter
