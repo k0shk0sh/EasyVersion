@@ -14,12 +14,13 @@ repositories {
   mavenCentral()
 }
 
-
 gradlePlugin {
   plugins {
-    create("easyversion") {
-      id = "com.github.k0shk0sh.easy.version"
+    create("easyVersion") {
+      id = "easyVersion"
       implementationClass = "EasyVersionPlugin"
+      displayName = "EasyVersion Gradle Plugin"
+      description = "Gradle plugin that manage your App or Library versioning"
     }
   }
 }

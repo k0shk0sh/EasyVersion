@@ -1,12 +1,12 @@
 /**
  * The current version name.
  */
-const val EASY_VERSION_NAME = "EasyForms.NAME"
+internal const val EASY_VERSION_NAME = "EasyForms.NAME"
 
 /**
  * The current version code.
  */
-const val EASY_VERSION_CODE = "EasyForms.CODE"
+internal const val EASY_VERSION_CODE = "EasyForms.CODE"
 
 /**
  * Property of maven central version.

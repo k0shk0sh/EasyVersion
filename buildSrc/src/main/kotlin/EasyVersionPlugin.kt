@@ -1,15 +1,30 @@
+import java.io.File
 import org.gradle.api.*
+import org.gradle.kotlin.dsl.create
 
 class EasyVersionPlugin : Plugin<Project> {
 
   override fun apply(project: Project) {
-    project.extensions.create("easyVersion", EasyVersionExtension::class.java, project)
+    project.extensions.create<EasyVersionExtension>("easyVersionConfig")
+
+    if (!project.file(FILE_NAME).exists()) {
+      throw GradleException("Please create $FILE_NAME in your root project directory")
+    }
 
     project.afterEvaluate {
+      setVersionNameAndCode(this)
       tasks.create("nextMajor", nextMajor())
       tasks.create("nextMinor", nextMinor())
       tasks.create("nextPatch", nextPatch())
       tasks.create("nextSnapshot", nextSnapshot())
+    }
+  }
+
+  private fun setVersionNameAndCode(project: Project) {
+    EasyVersionFileProvider.easyVersion().let {
+      setProjectVersion(
+        project, project.getExtension(), it, isSnapshot = !it.snapshotVersion.isNullOrBlank()
+      )
     }
   }
 
@@ -18,9 +33,9 @@ class EasyVersionPlugin : Plugin<Project> {
     actions = listOf(
       object : Action<Task> {
         override fun execute(t: Task) {
-          val extension = getExtension()
-          val easyVersion = easyVersion(extension.fileName).increaseMajor()
-          EasyVersionFileProvider.writeVersion(extension.fileName, easyVersion)
+          val extension = project.getExtension()
+          val easyVersion = easyVersion().increaseMajor()
+          EasyVersionFileProvider.writeVersion(easyVersion)
           setProjectVersion(project, extension, easyVersion)
         }
       },
@@ -32,9 +47,9 @@ class EasyVersionPlugin : Plugin<Project> {
     actions = listOf(
       object : Action<Task> {
         override fun execute(t: Task) {
-          val extension = getExtension()
-          val easyVersion = easyVersion(extension.fileName).increaseMinor()
-          EasyVersionFileProvider.writeVersion(extension.fileName, easyVersion)
+          val extension = project.getExtension()
+          val easyVersion = easyVersion().increaseMinor()
+          EasyVersionFileProvider.writeVersion(easyVersion)
           setProjectVersion(project, extension, easyVersion)
         }
       },
@@ -46,9 +61,9 @@ class EasyVersionPlugin : Plugin<Project> {
     actions = listOf(
       object : Action<Task> {
         override fun execute(t: Task) {
-          val extension = getExtension()
-          val easyVersion = easyVersion(extension.fileName).increasePatch()
-          EasyVersionFileProvider.writeVersion(extension.fileName, easyVersion)
+          val extension = project.getExtension()
+          val easyVersion = easyVersion().increasePatch()
+          EasyVersionFileProvider.writeVersion(easyVersion)
           setProjectVersion(project, extension, easyVersion)
         }
       },
@@ -60,19 +75,19 @@ class EasyVersionPlugin : Plugin<Project> {
     actions = listOf(
       object : Action<Task> {
         override fun execute(t: Task) {
-          val extension = getExtension()
-          val easyVersion = easyVersion(extension.fileName).setSnapshot(
+          val extension = project.getExtension()
+          val easyVersion = easyVersion().setSnapshot(
             extension.getSnapshotVersion(project)
           )
-          EasyVersionFileProvider.writeVersion(extension.fileName, easyVersion)
-          setProjectVersion(project, extension, easyVersion)
+          EasyVersionFileProvider.writeVersion(easyVersion)
+          setProjectVersion(project, extension, easyVersion, isSnapshot = true)
         }
       },
     )
   }
 
-  private fun Task.getExtension(): EasyVersionExtension {
-    return project.rootProject.extensions.getByType(EasyVersionExtension::class.java)
+  private fun Project.getExtension(): EasyVersionExtension {
+    return rootProject.extensions.getByType(EasyVersionExtension::class.java)
   }
 
   private fun Task.setTaskMetaData(taskName: String) {
@@ -84,8 +99,9 @@ class EasyVersionPlugin : Plugin<Project> {
     project: Project,
     extension: EasyVersionExtension,
     easyVersion: EasyVersion,
+    isSnapshot: Boolean = false,
   ) {
-    val version = if (!easyVersion.snapshotVersion.isNullOrEmpty()) {
+    val version = if (isSnapshot && !easyVersion.snapshotVersion.isNullOrEmpty()) {
       if (extension.snapshotLabel.isNullOrEmpty()) {
         easyVersion.snapshotVersion
       } else {
@@ -102,7 +118,16 @@ class EasyVersionPlugin : Plugin<Project> {
     extension.propertiesToSet.forEach { project.extensions.extraProperties.set(it, version) }
     project.extensions.extraProperties.set(EASY_VERSION_NAME, easyVersion.versionName)
     project.extensions.extraProperties.set(EASY_VERSION_CODE, easyVersion.versionCode)
+
+    if (extension.logVersion) logEasyVersion(project)
   }
 
-  private fun easyVersion(fileName: String) = EasyVersionFileProvider.easyVersion(fileName)
+  private fun easyVersion() = EasyVersionFileProvider.easyVersion()
+
+  private fun logEasyVersion(project: Project) {
+    println("EasyVersionPlugin: project.version = ${project.version}")
+    println("EasyVersionPlugin: project.versionName = ${project.versionName}")
+    println("EasyVersionPlugin: project.versionCode = ${project.versionCode}")
+  }
+
 }

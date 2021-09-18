@@ -4,10 +4,6 @@ import java.util.*
 import org.gradle.api.Project
 
 abstract class EasyVersionExtension {
-  /**
-   * The json file name of your EasyVersion.
-   */
-  var fileName: String = FILE_NAME
 
   /**
    * Define which properties the plugin will set after its task has completed.
@@ -37,6 +33,13 @@ abstract class EasyVersionExtension {
    * Default: [SnapshotDefinition.DATE_SECONDS]
    */
   var snapshotDefinition: SnapshotDefinition = SnapshotDefinition.DATE_SECONDS
+
+  /**
+   * Define if you like the version to logged everytime a gradle sync is happening.
+   *
+   * Default: false
+   */
+  var logVersion: Boolean = false
 
   internal fun getSnapshotVersion(project: Project): String {
     return when (snapshotDefinition) {
