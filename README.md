@@ -2,10 +2,10 @@
 
 EasyVersion is a Gradle plugin that manage your app or library version.
 
-## Download
+## Before Downloading
 
-Please downloading the plugin, please create `easy_version.json` in your root project directory with
-below content.
+Please before downloading the plugin, please create `easy_version.json` in your root project
+directory with below content.
 
 ```json
 {
@@ -15,6 +15,8 @@ below content.
   "snapshotVersion": null
 }
 ```
+
+## Download
 
 ```kotlin
 plugins {
@@ -41,19 +43,20 @@ to false via the plugin extension configuration. They will also ensure to set al
 properties upon completion.
 
 - Next Major
-  - Updates the version to the next possible major version and resets snapshot, minor and patch.
+  - Updates the version to the next possible major version and resets snapshot, minor & patch.
   - `./gradlew nextMajor`
 
 - Next Minor
-  - Updates the version to the next possible minor version and resets patch.
+  - Updates the version to the next possible minor version and resets patch & snapshot.
   - `./gradlew nextMinor`
 
 - Next Patch
-  - Updates the version to the next patch version.
+  - Updates the version to the next patch version and resets snapshot.
   - `./gradlew nextPatch`
 
 - Next Snapshot
-  - Updates the snapshot version with either of one the snapshot definition.
+  - Updates the snapshot version with either one of the snapshot definition supplied in
+    plugin configuration.
   - `./gradlew nextSnapshot`
 
 ## EasyVersion Properties
