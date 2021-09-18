@@ -1,10 +1,20 @@
 import java.net.URL
+//import com.github.k0shk0sh.easy.version.SnapshotDefinition
 
 plugins {
   `kotlin-dsl`
   id("org.jetbrains.dokka") version "1.5.0"
   id("com.vanniktech.maven.publish") version "0.18.0"
+//  id("com.github.k0shk0sh.easy.version") version "+" // get latest always
 }
+
+//easyVersion {
+//  snapshotLabel = "-SNAPSHOT"
+//  snapshotDefinition = SnapshotDefinition.TIMESTAMP
+//  propertiesToSet = listOf("VERSION_NAME")
+//  setToProjectVersion = true
+//  logVersion = true
+//}
 
 gradlePlugin {
   plugins {

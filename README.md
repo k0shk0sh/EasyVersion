@@ -1,3 +1,6 @@
+![release-status](https://github.com/k0shk0sh/EasyVersion/actions/workflows/release.yml/badge.svg) [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.github.k0shk0sh/easyversion/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.github.k0shk0sh/easyversion)
+
+
 # EasyVersion
 
 EasyVersion is a Gradle plugin that manage your app or library version.
@@ -64,9 +67,16 @@ properties upon completion.
 Before publishing your new awesome library, module or app, call either one of the tasks first followed by
 your releasing task.
 
+> P.S: this library uses itself to manage its release versioning.
+
 ## EasyVersion Properties
 
 EasyVersion comes with two handy extensions specifically for Android projects:
 
 - `project.versionName` returns the current version name or snapshot if its available.
 - `project.versionCode` returns the current version code based on `$major$minor$patch.toInt()`.
+
+## Contributions
+
+Please contribute! We will gladly review any pull requests. Make sure to read
+the [Contributing](.github/CONTRIBUTING.md) page first though.
