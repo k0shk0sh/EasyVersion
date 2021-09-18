@@ -4,10 +4,6 @@ plugins {
   `kotlin-dsl`
 }
 
-kotlin {
-  explicitApi()
-}
-
 dependencies {
   implementation(kotlin("gradle-plugin"))
   implementation(gradleApi())
@@ -16,4 +12,14 @@ dependencies {
 
 repositories {
   mavenCentral()
+}
+
+
+gradlePlugin {
+  plugins {
+    create("easyversion") {
+      id = "com.github.k0shk0sh.easy.version"
+      implementationClass = "EasyVersionPlugin"
+    }
+  }
 }

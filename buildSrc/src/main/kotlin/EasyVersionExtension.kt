@@ -7,7 +7,7 @@ abstract class EasyVersionExtension {
   /**
    * The json file name of your EasyVersion.
    */
-  var fileName: String = "easy_version.json"
+  var fileName: String = FILE_NAME
 
   /**
    * Define which properties the plugin will set after its task has completed.
@@ -42,18 +42,8 @@ abstract class EasyVersionExtension {
     return when (snapshotDefinition) {
       SnapshotDefinition.TIMESTAMP -> System.currentTimeMillis().toString()
       SnapshotDefinition.DATE_SECONDS -> DateFormat.getInstance().format(Date())
-      SnapshotDefinition.COMMIT -> project.runCommand("git rev-parse --verify --short HEAD")
+      SnapshotDefinition.COMMIT -> project.runCommandLine("git rev-parse --verify --short HEAD")
     }
-  }
-
-  /**
-   * @suppress
-   */
-  companion object {
-    /**
-     * Property of com.vanniktech.maven.publish plugin.
-     */
-    private const val VERSION_NAME = "VERSION_NAME"
   }
 }
 
@@ -64,8 +54,10 @@ enum class SnapshotDefinition {
   TIMESTAMP, DATE_SECONDS, COMMIT;
 }
 
-
-private fun Project.runCommand(command: String): String {
+/**
+ * Run a command line.
+ */
+private fun Project.runCommandLine(command: String): String {
   val byteOut = ByteArrayOutputStream()
   project.exec {
     setCommandLine(command)

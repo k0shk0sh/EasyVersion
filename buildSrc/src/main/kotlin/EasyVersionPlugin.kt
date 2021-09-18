@@ -3,31 +3,22 @@ import org.gradle.api.*
 class EasyVersionPlugin : Plugin<Project> {
 
   override fun apply(project: Project) {
-    val extension = project.extensions.create(
-      "easyVersion", EasyVersionExtension::class.java, project,
-    )
-
-    val filePath = extension.fileName
-    val propertiesToSet = extension.propertiesToSet
-    val setToProjectVersion = extension.setToProjectVersion
-    val snapshotLabel = extension.snapshotLabel
-    val snapshotVersion = extension.getSnapshotVersion(project)
+    project.extensions.create("easyVersion", EasyVersionExtension::class.java, project)
 
     project.afterEvaluate {
-      tasks.create("nextMajor", nextMajor(extension))
-      tasks.create("nextMinor", nextMinor(extension))
-      tasks.create("nextPatch", nextPatch(extension))
-      tasks.create("nextSnapshot", nextSnapshot(extension))
+      tasks.create("nextMajor", nextMajor())
+      tasks.create("nextMinor", nextMinor())
+      tasks.create("nextPatch", nextPatch())
+      tasks.create("nextSnapshot", nextSnapshot())
     }
   }
 
-  private fun nextMajor(
-    extension: EasyVersionExtension,
-  ): (Task).() -> Unit = {
+  private fun nextMajor(): (Task).() -> Unit = {
     setTaskMetaData("major")
     actions = listOf(
       object : Action<Task> {
         override fun execute(t: Task) {
+          val extension = getExtension()
           val easyVersion = easyVersion(extension.fileName).increaseMajor()
           EasyVersionFileProvider.writeVersion(extension.fileName, easyVersion)
           setProjectVersion(project, extension, easyVersion)
@@ -36,13 +27,12 @@ class EasyVersionPlugin : Plugin<Project> {
     )
   }
 
-  private fun nextMinor(
-    extension: EasyVersionExtension,
-  ): (Task).() -> Unit = {
+  private fun nextMinor(): (Task).() -> Unit = {
     setTaskMetaData("minor")
     actions = listOf(
       object : Action<Task> {
         override fun execute(t: Task) {
+          val extension = getExtension()
           val easyVersion = easyVersion(extension.fileName).increaseMinor()
           EasyVersionFileProvider.writeVersion(extension.fileName, easyVersion)
           setProjectVersion(project, extension, easyVersion)
@@ -51,13 +41,12 @@ class EasyVersionPlugin : Plugin<Project> {
     )
   }
 
-  private fun nextPatch(
-    extension: EasyVersionExtension,
-  ): (Task).() -> Unit = {
+  private fun nextPatch(): (Task).() -> Unit = {
     setTaskMetaData("patch")
     actions = listOf(
       object : Action<Task> {
         override fun execute(t: Task) {
+          val extension = getExtension()
           val easyVersion = easyVersion(extension.fileName).increasePatch()
           EasyVersionFileProvider.writeVersion(extension.fileName, easyVersion)
           setProjectVersion(project, extension, easyVersion)
@@ -66,13 +55,12 @@ class EasyVersionPlugin : Plugin<Project> {
     )
   }
 
-  private fun nextSnapshot(
-    extension: EasyVersionExtension,
-  ): (Task).() -> Unit = {
+  private fun nextSnapshot(): (Task).() -> Unit = {
     setTaskMetaData("snapshot")
     actions = listOf(
       object : Action<Task> {
         override fun execute(t: Task) {
+          val extension = getExtension()
           val easyVersion = easyVersion(extension.fileName).setSnapshot(
             extension.getSnapshotVersion(project)
           )
@@ -81,6 +69,10 @@ class EasyVersionPlugin : Plugin<Project> {
         }
       },
     )
+  }
+
+  private fun Task.getExtension(): EasyVersionExtension {
+    return project.rootProject.extensions.getByType(EasyVersionExtension::class.java)
   }
 
   private fun Task.setTaskMetaData(taskName: String) {
@@ -100,12 +92,16 @@ class EasyVersionPlugin : Plugin<Project> {
         "${easyVersion.snapshotVersion}${extension.snapshotLabel}"
       }
     } else {
-      easyVersion.version
+      easyVersion.versionName
     }
+
     if (extension.setToProjectVersion) {
       project.version = version
     }
+
     extension.propertiesToSet.forEach { project.extensions.extraProperties.set(it, version) }
+    project.extensions.extraProperties.set(EASY_VERSION_NAME, easyVersion.versionName)
+    project.extensions.extraProperties.set(EASY_VERSION_CODE, easyVersion.versionCode)
   }
 
   private fun easyVersion(fileName: String) = EasyVersionFileProvider.easyVersion(fileName)
