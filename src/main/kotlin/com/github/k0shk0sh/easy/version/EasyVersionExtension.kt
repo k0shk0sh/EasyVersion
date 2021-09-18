@@ -5,6 +5,9 @@ import java.text.DateFormat
 import java.util.*
 import org.gradle.api.Project
 
+/**
+ * EasyVersion configuration extension class.
+ */
 abstract class EasyVersionExtension {
 
   /**
@@ -56,7 +59,20 @@ abstract class EasyVersionExtension {
  * Tells the plugin how to construct the snapshot version.
  */
 enum class SnapshotDefinition {
-  TIMESTAMP, DATE_SECONDS, COMMIT;
+  /**
+   * Configure the plugin to use [System.currentTimeMillis] as the version.
+   */
+  TIMESTAMP,
+
+  /**
+   * Configure the plugin to (yyyy-mm-dd-ss) as the version.
+   */
+  DATE_SECONDS,
+
+  /**
+   * Configure the plugin to use the short commit hash as the version.
+   */
+  COMMIT;
 }
 
 /**

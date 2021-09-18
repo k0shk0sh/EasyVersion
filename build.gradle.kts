@@ -44,5 +44,5 @@ tasks.dokkaHtml.configure {
       }
     }
   }
-  outputDirectory.set(file("/docs"))
+  outputDirectory.set(file("docs"))
 }

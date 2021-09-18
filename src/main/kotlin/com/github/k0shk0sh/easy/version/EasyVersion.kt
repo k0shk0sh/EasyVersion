@@ -4,6 +4,9 @@ import com.google.gson.GsonBuilder
 import java.io.FileReader
 import java.io.FileWriter
 
+/**
+ * Class that represent the [FILE_NAME] json object.
+ */
 internal data class EasyVersion(
   val major: Int = 0,
   val minor: Int = 0,

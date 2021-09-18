@@ -3,6 +3,9 @@ package com.github.k0shk0sh.easy.version
 import org.gradle.api.*
 import org.gradle.kotlin.dsl.create
 
+/**
+ * EasyVersion plugin class.
+ */
 class EasyVersionPlugin : Plugin<Project> {
 
   override fun apply(project: Project) {
