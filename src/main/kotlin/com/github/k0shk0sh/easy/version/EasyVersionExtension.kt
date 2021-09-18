@@ -65,7 +65,7 @@ enum class SnapshotDefinition {
 private fun Project.runCommandLine(command: String): String {
   val byteOut = ByteArrayOutputStream()
   project.exec {
-    setCommandLine(command)
+    commandLine = command.split(" ")
     standardOutput = byteOut
   }
   return String(byteOut.toByteArray()).trim()

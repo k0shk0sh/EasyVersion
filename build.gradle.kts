@@ -1,17 +1,8 @@
-import com.github.k0shk0sh.easy.version.SnapshotDefinition
+//import com.github.k0shk0sh.easy.version.SnapshotDefinition
 
 plugins {
   `kotlin-dsl`
   id("com.vanniktech.maven.publish") version "0.18.0"
-  id("com.github.k0shk0sh.easy.version") version "+" // get latest from mavenLocal()
-}
-
-easyVersion {
-  snapshotLabel = "-SNAPSHOT"
-  snapshotDefinition = SnapshotDefinition.TIMESTAMP
-  propertiesToSet = listOf("VERSION_NAME")
-  setToProjectVersion = true
-  logVersion = true
 }
 
 gradlePlugin {

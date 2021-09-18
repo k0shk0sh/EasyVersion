@@ -4,8 +4,8 @@ EasyVersion is a Gradle plugin that manage your app or library version.
 
 ## Before Downloading
 
-Please before downloading the plugin, please create `easy_version.json` in your root project
-directory with below content.
+Create `easy_version.json` in your root project directory with below content and modify them to
+match your needs.
 
 ```json
 {
@@ -20,14 +20,14 @@ directory with below content.
 
 ```kotlin
 plugins {
-  "easyVersion" version "<version>"
+  "com.github.k0shk0sh.easy.version" version "<version>"
 }
 ```
 
 ## Possible Configurations
 
 ```kotlin
-easyVersionConfig {
+easyVersion {
   snapshotLabel = "-SNAPSHOT" // default.
   snapshotDefinition = SnapshotDefinition.TIMESTAMP // default. Or change to DATE_SECONDS, COMMIT.
   propertiesToSet = listOf("VERSION_NAME") // default.
@@ -39,7 +39,7 @@ easyVersionConfig {
 ## Tasks
 
 Running either one of the tasks will set your project to the new version automatically unless if set
-to false via the plugin extension configuration. They will also ensure to set all your supplied
+to false via the plugin extension configuration. Each task will also ensure to set all your supplied
 properties upon completion.
 
 - Next Major
@@ -55,9 +55,14 @@ properties upon completion.
   - `./gradlew nextPatch`
 
 - Next Snapshot
-  - Updates the snapshot version with either one of the snapshot definition supplied in
-    plugin configuration.
+  - Updates the snapshot version with either one of the snapshot definition supplied in plugin
+    configuration.
   - `./gradlew nextSnapshot`
+
+## Example
+
+Before publishing your new awesome library or module, call either one of the tasks first followed by
+your releasing task.
 
 ## EasyVersion Properties
 

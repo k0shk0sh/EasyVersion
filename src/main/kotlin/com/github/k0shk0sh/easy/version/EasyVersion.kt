@@ -63,6 +63,7 @@ object EasyVersionFileProvider {
    */
   private val gson = GsonBuilder()
     .serializeNulls()
+    .setPrettyPrinting()
     .create()
 
   /**
@@ -86,5 +87,4 @@ object EasyVersionFileProvider {
       gson.toJson(easyVersion, it)
     }
   }
-
 }

@@ -21,14 +21,18 @@ class EasyVersionPlugin : Plugin<Project> {
     }
   }
 
+  /**
+   * Initialize project with current configuration on sync.
+   */
   private fun setVersionNameAndCode(project: Project) {
-    EasyVersionFileProvider.easyVersion().let {
-      setProjectVersion(
-        project, project.getExtension(), it, isSnapshot = !it.snapshotVersion.isNullOrBlank()
-      )
-    }
+    setProjectVersion(
+      project, project.getExtension(), EasyVersionFileProvider.easyVersion()
+    )
   }
 
+  /**
+   * Run nextMajor task.
+   */
   private fun nextMajor(): (Task).() -> Unit = {
     setTaskMetaData("major")
     actions = listOf(
@@ -43,6 +47,9 @@ class EasyVersionPlugin : Plugin<Project> {
     )
   }
 
+  /**
+   * Run nextMinor task.
+   */
   private fun nextMinor(): (Task).() -> Unit = {
     setTaskMetaData("minor")
     actions = listOf(
@@ -57,6 +64,9 @@ class EasyVersionPlugin : Plugin<Project> {
     )
   }
 
+  /**
+   * Run nextPatch task.
+   */
   private fun nextPatch(): (Task).() -> Unit = {
     setTaskMetaData("patch")
     actions = listOf(
@@ -71,6 +81,9 @@ class EasyVersionPlugin : Plugin<Project> {
     )
   }
 
+  /**
+   * Run nextSnapshot task.
+   */
   private fun nextSnapshot(): (Task).() -> Unit = {
     setTaskMetaData("snapshot")
     actions = listOf(
@@ -78,39 +91,43 @@ class EasyVersionPlugin : Plugin<Project> {
         override fun execute(t: Task) {
           val extension = project.getExtension()
           val easyVersion = easyVersion().setSnapshot(
-            extension.getSnapshotVersion(project)
+            if (!extension.snapshotLabel.isNullOrBlank()) {
+              "${extension.getSnapshotVersion(project)}${extension.snapshotLabel}"
+            } else {
+              extension.getSnapshotVersion(project)
+            }
           )
           EasyVersionFileProvider.writeVersion(easyVersion)
-          setProjectVersion(project, extension, easyVersion, isSnapshot = true)
+          setProjectVersion(project, extension, easyVersion)
         }
       },
     )
   }
 
+  /**
+   * Get EasyVersion extension.
+   */
   private fun Project.getExtension(): EasyVersionExtension {
     return rootProject.extensions.getByType(EasyVersionExtension::class.java)
   }
 
+  /**
+   * Initialize task description and group.
+   */
   private fun Task.setTaskMetaData(taskName: String) {
     group = "EasyVersion"
     description = "Updating $taskName version"
   }
 
+  /**
+   * Sets project version, custom properties & EasyVersion properties.
+   */
   private fun setProjectVersion(
     project: Project,
     extension: EasyVersionExtension,
     easyVersion: EasyVersion,
-    isSnapshot: Boolean = false,
   ) {
-    val version = if (isSnapshot && !easyVersion.snapshotVersion.isNullOrEmpty()) {
-      if (extension.snapshotLabel.isNullOrEmpty()) {
-        easyVersion.snapshotVersion
-      } else {
-        "${easyVersion.snapshotVersion}${extension.snapshotLabel}"
-      }
-    } else {
-      easyVersion.versionName
-    }
+    val version = easyVersion.versionName
 
     if (extension.setToProjectVersion) {
       project.version = version
