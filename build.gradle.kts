@@ -11,9 +11,6 @@ plugins {
 }
 
 easyVersion {
-  snapshotLabel = "-SNAPSHOT"
-  snapshotDefinition = SnapshotDefinition.TIMESTAMP
-  propertiesToSet = listOf("VERSION_NAME")
   setToProjectVersion = true
   logVersion = true
 }

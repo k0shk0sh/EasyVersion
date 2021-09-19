@@ -1,8 +1,8 @@
 package com.github.k0shk0sh.easy.version
 
 import java.io.ByteArrayOutputStream
-import java.text.DateFormat
-import java.util.*
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 import org.gradle.api.Project
 
 /**
@@ -49,7 +49,8 @@ abstract class EasyVersionExtension {
   internal fun getSnapshotVersion(project: Project): String {
     return when (snapshotDefinition) {
       SnapshotDefinition.TIMESTAMP -> System.currentTimeMillis().toString()
-      SnapshotDefinition.DATE_SECONDS -> DateFormat.getInstance().format(Date())
+      SnapshotDefinition.DATE_SECONDS -> LocalDateTime.now()
+        .format(DateTimeFormatter.ofPattern("yyyy-mm-dd-ss"))
       SnapshotDefinition.COMMIT -> project.runCommandLine("git rev-parse --verify --short HEAD")
     }
   }

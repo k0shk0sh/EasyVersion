@@ -15,7 +15,7 @@ internal data class EasyVersion(
 )
 
 /**
- * Increase major version and reset the reset.
+ * Increase major version and reset the rest.
  */
 internal fun EasyVersion.increaseMajor() = this.copy(
   major = major + 1, minor = 0, patch = 0, snapshotVersion = null,
