@@ -22,8 +22,8 @@ githubRelease {
   repo("EasyVersion")
   tagName(version)
   targetCommitish("main")
-  releaseName(version)
-  body(changelog())
+  releaseName { "Release: ${version.call()}" }
+  body { "EasyVersion Release: ${version.call()}" }
 }
 
 tasks.dokkaHtml.configure {
