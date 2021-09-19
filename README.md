@@ -61,8 +61,11 @@ properties upon completion.
 
 ## Example
 
-Before publishing your new awesome library, module or app, call either one of the tasks first followed by
-your releasing task.
+Before publishing your new awesome library, module or app, call either one of the tasks first
+followed by your releasing task.
+
+You can also refer to [ComposeEasyForms-Library](https://github.com/k0shk0sh/ComposeEasyForms) that
+uses this library to manage its release update versioning.
 
 > P.S: this library uses itself to manage its release versioning.
 
