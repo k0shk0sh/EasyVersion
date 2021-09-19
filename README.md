@@ -73,8 +73,17 @@ uses this library to manage its release update versioning.
 
 EasyVersion comes with two handy extensions specifically for Android projects:
 
-- `project.versionName` returns the current version name or snapshot if its available.
-- `project.versionCode` returns the current version code based on `$major$minor$patch.toInt()`.
+- `rootproject.versionName` returns the current version name or snapshot if its available.
+- `rootProject.versionCode` returns the current version code based on `$major$minor$patch.toInt()`.
+
+```kotlin
+android {
+  defaultConfig {
+    versionCode = rootProject.versionCode as Int
+    versionName = rootProject.versionName as String
+  }
+}
+```
 
 ## Contributions
 
