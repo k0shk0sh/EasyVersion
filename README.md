@@ -69,6 +69,8 @@ uses this library to manage its release update versioning.
 
 > P.S: this library uses itself to manage its release versioning.
 
+Alternatively see [release.yml](./.github/workflows/release.yml) for more details.
+
 ## EasyVersion Properties
 
 EasyVersion comes with two handy extensions specifically for Android projects:
