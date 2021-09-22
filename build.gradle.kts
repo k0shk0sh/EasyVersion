@@ -1,13 +1,18 @@
 import java.net.URL
 import java.util.concurrent.Callable
-import com.github.k0shk0sh.easy.version.SnapshotDefinition
+
+buildscript {
+  dependencies {
+    classpath("com.github.k0shk0sh:easyversion:+")
+  }
+}
 
 plugins {
   `kotlin-dsl`
   id("org.jetbrains.dokka") version "1.5.0"
   id("com.vanniktech.maven.publish") version "0.18.0"
   id("com.github.breadmoirai.github-release") version "2.2.12"
-  id("com.github.k0shk0sh.easy.version") version "+" // get latest always
+  id("com.github.k0shk0sh.easy.version") version "0.+"
 }
 
 easyVersion {
@@ -58,7 +63,6 @@ gradlePlugin {
 
 repositories {
   mavenCentral()
-  mavenLocal()
 }
 
 dependencies {
