@@ -26,7 +26,7 @@ abstract class EasyVersionExtension {
   var setToProjectVersion: Boolean = true
 
   /**
-   * Define the snapshot label to use.
+   * Define the snapshot label to append to what snapshot definition generates.
    *
    * Default: -SNAPSHOT
    */
