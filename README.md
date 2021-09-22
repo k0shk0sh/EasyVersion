@@ -33,6 +33,7 @@ easyVersion {
   propertiesToSet = listOf("VERSION_NAME") // default.
   setToProjectVersion = true // default.
   logVersion = true // default = false. log versions everytime gradle syncs.
+  snapshotVersionGenerator = { "myAwesomeSnapshotGenerator" } // default null to use snapshotDefinition.
 }
 ```
 

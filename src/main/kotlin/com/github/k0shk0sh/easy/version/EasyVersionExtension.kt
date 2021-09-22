@@ -40,6 +40,13 @@ abstract class EasyVersionExtension {
   var snapshotDefinition: SnapshotDefinition = SnapshotDefinition.DATE_SECONDS
 
   /**
+   * Generate your own custom snapshot version.
+   *
+   * If not set, then [snapshotDefinition] is used.
+   */
+  var snapshotVersionGenerator: (() -> String)? = null
+
+  /**
    * Define if you like the version to logged everytime a gradle sync is happening.
    *
    * Default: false
