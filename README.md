@@ -28,7 +28,7 @@ plugins {
 
 ```kotlin
 easyVersion {
-  snapshotLabel = "-SNAPSHOT" // default.
+  snapshotLabel = "-SNAPSHOT" // default. If snapshotVersionGenerator not provided.
   snapshotDefinition = SnapshotDefinition.TIMESTAMP // default. Or change to DATE_SECONDS, COMMIT.
   propertiesToSet = listOf("VERSION_NAME") // default.
   setToProjectVersion = true // default.
