@@ -10,6 +10,7 @@ $dokka.location:com.github.k0shk0sh.easy.version/EasyVersionExtension/properties
 $dokka.location:com.github.k0shk0sh.easy.version/EasyVersionExtension/setToProjectVersion/#/PointingToDeclaration/-easy-version/com.github.k0shk0sh.easy.version/-easy-version-extension/set-to-project-version.html
 $dokka.location:com.github.k0shk0sh.easy.version/EasyVersionExtension/snapshotDefinition/#/PointingToDeclaration/-easy-version/com.github.k0shk0sh.easy.version/-easy-version-extension/snapshot-definition.html
 $dokka.location:com.github.k0shk0sh.easy.version/EasyVersionExtension/snapshotLabel/#/PointingToDeclaration/-easy-version/com.github.k0shk0sh.easy.version/-easy-version-extension/snapshot-label.html
+$dokka.location:com.github.k0shk0sh.easy.version/EasyVersionExtension/snapshotVersionGenerator/#/PointingToDeclaration/-easy-version/com.github.k0shk0sh.easy.version/-easy-version-extension/snapshot-version-generator.html
 $dokka.location:com.github.k0shk0sh.easy.version/EasyVersionFileProvider///PointingToDeclaration/-easy-version/com.github.k0shk0sh.easy.version/-easy-version-file-provider/index.html
 $dokka.location:com.github.k0shk0sh.easy.version/EasyVersionPlugin///PointingToDeclaration/-easy-version/com.github.k0shk0sh.easy.version/-easy-version-plugin/index.html
 $dokka.location:com.github.k0shk0sh.easy.version/EasyVersionPlugin/EasyVersionPlugin/#/PointingToDeclaration/-easy-version/com.github.k0shk0sh.easy.version/-easy-version-plugin/-easy-version-plugin.html
