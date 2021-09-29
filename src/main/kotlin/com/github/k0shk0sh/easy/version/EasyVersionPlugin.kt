@@ -2,6 +2,7 @@ package com.github.k0shk0sh.easy.version
 
 import org.gradle.api.*
 import org.gradle.kotlin.dsl.create
+import java.lang.IllegalArgumentException
 
 /**
  * EasyVersion plugin class.
@@ -11,7 +12,12 @@ class EasyVersionPlugin : Plugin<Project> {
     /**
      * Apply the plugin to the current [Project].
      */
-    override fun apply(project: Project) {
+    override fun apply(target: Project) {
+        if (target != target.rootProject) {
+            throw IllegalArgumentException("Please apply EasyVersion only to the root project.")
+        }
+
+        val project = target.rootProject
         project.extensions.create<EasyVersionExtension>("easyVersion")
 
         if (!project.file(FILE_NAME).exists()) {
@@ -119,7 +125,7 @@ class EasyVersionPlugin : Plugin<Project> {
      * Get EasyVersion extension.
      */
     private fun Project.getExtension(): EasyVersionExtension {
-        return rootProject.extensions.getByType(EasyVersionExtension::class.java)
+        return extensions.getByType(EasyVersionExtension::class.java)
     }
 
     /**
